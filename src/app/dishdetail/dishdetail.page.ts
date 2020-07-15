@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
-import { Comment } from '../shared/comment';
-import { NavController, NavParams, AlertController, LoadingController } from '@ionic/angular';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dishdetail',
@@ -13,7 +11,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DishdetailPage implements OnInit {
 
   dish: Dish;
-  //private dish;
   errMess: string;
   avgstars: string;
   numcomments: number;
