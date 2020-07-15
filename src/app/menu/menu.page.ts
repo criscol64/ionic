@@ -27,8 +27,8 @@ export class MenuPage implements OnInit {
 
   dishSelected(event, dish) {
         // That's right, we're pushing to ourselves!
-        console.log(dish);
-        return this.router.navigateByUrl('/menu');
+        //console.log(dish);
+        //return this.router.navigateByUrl('/dishdetail/0');
       }
 
 }

@@ -25,12 +25,12 @@ export class AppComponent implements OnInit {
     {
       title: 'Menu',
       url: 'menu',
-      icon: 'list-box'
+      icon: 'book'
     },
     {
       title: 'Contact Us',
       url: 'contact',
-      icon: 'contact'
+      icon: 'mail'
     }
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
@@ -51,6 +51,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 }

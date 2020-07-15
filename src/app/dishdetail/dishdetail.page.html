@@ -1,34 +1,40 @@
 <ion-header>
   <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu"></ion-back-button>
+    </ion-buttons>
     <ion-title>Dish Details</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content>
   <ion-card *ngIf="dish">
-    <ion-img src="{{BaseURL + dish.image}}"/>
+    <ion-img src="{{BaseURL + dish.image}}"></ion-img>
+    <ion-card-header>
+      <ion-card-title>{{dish.name | uppercase}}</ion-card-title>
+    </ion-card-header>
     <ion-card-content>
-      <ion-card-title>
-        {{dish.name | uppercase}}
-      </ion-card-title>
       <p>
         {{dish.description}}
       </p>
     </ion-card-content>
-    <ion-row>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="star"></ion-icon>
-          <div>{{ avgstars }} stars</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small>
-          <ion-icon name="text"></ion-icon>
-          <div>{{ numcomments }} Comments</div>
-        </button>
-      </ion-col>
-    </ion-row>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button size="small" fill="clear">
+            <ion-icon slot="start" name="star"></ion-icon>
+            <div>{{ avgstars }} Stars</div>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button size="small" fill="clear">
+            <ion-icon slot="start" name="reader"></ion-icon>
+            <div>{{ numcomments }} Comments</div>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </ion-card>
   <div [hidden]="dish || errMess">
     <ion-spinner></ion-spinner>
@@ -44,11 +50,13 @@
       Comments
     </ion-list-header>
     <ion-item *ngFor="let comment of dish.comments" text-wrap>
-      <h4> {{comment.comment}} </h4>
-      <p> {{comment.rating}} Stars</p>
-      <p>
-        <span> -- {{comment.author}} {{comment.date | date }} </span>
-      </p>
+      <ion-label>
+        <h4> {{comment.comment}} </h4>
+        <p> {{comment.rating}} Stars</p>
+        <p>
+          <span> -- {{comment.author}} {{comment.date | date }} </span>
+        </p>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

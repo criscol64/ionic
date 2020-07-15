@@ -28,4 +28,9 @@ export class DishService {
     return this.http.get<Dish>(baseURL + 'dishes?featured=true').pipe(map(dish => dish[0]))
       .pipe(catchError(error => { return this.processHTTPMsgService.handleError(error); }));
   }
+
+  getDishIds(): Observable<number[] | any> {
+    return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)))
+      .pipe(catchError(error => error));
+  }
 }
