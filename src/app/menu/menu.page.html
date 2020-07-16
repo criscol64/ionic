@@ -9,7 +9,7 @@
 
 <ion-content class="card-background-page">
   <div *ngIf="dishes">
-    <ion-card *ngFor="let dish of dishes" (click)="dishSelected($event, dish)" [routerLink]="['/dishdetail', dish.id]">
+    <ion-card *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" (pan)="addToFavorites(dish)">
       <ion-img src="{{BaseURL + dish.image}}"></ion-img>
       <div class="card-title">{{dish.name}}</div>
       <div class="card-subtitle">{{dish.description}}</div>

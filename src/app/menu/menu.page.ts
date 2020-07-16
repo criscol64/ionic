@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { NavController, NavParams, AlertController, LoadingController } from '@ionic/angular';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
-import { DishdetailPage } from '../dishdetail/dishdetail.page';
-import { Router } from '@angular/router';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,8 +14,8 @@ export class MenuPage implements OnInit {
   errMess: string;
 
   constructor(private dishservice: DishService,
-    @Inject('BaseURL') private BaseURL,
-    private router: Router) { }
+    private favoriteservice: FavoriteService,
+    @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
     this.dishservice.getDishes()
@@ -25,10 +23,9 @@ export class MenuPage implements OnInit {
         errmess => this.errMess = <any>errmess);
   }
 
-  dishSelected(event, dish) {
-        // That's right, we're pushing to ourselves!
-        //console.log(dish);
-        //return this.router.navigateByUrl('/dishdetail/0');
-      }
+  addToFavorites(dish: Dish) {
+    console.log('Adding to Favorites', dish.id);
+    this.favoriteservice.addFavorite(dish.id);
+  }
 
 }
