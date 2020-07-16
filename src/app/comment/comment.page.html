@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Comment</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-text color="primary" mode="md">Cancel</ion-text>
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" lines="none">
+    <ion-list>
+     <ion-item>
+        <ion-label position="floating">Your Name</ion-label>
+        <ion-input  formControlName="author" type="text"></ion-input>
+      </ion-item>
+        <ion-label position="stacked">Your Rating</ion-label>
+        <ion-range  min="1" max="5" step="1" value="5" formControlName="rating" pin snaps>
+          <ion-icon slot="start" size="small" name="sad"></ion-icon>
+          <ion-icon slot="end" name="happy"></ion-icon>
+        </ion-range>
+      <ion-item>
+        <ion-label position="floating">Your Comment</ion-label>
+        <ion-textarea formControlName="comment" rows="12"></ion-textarea>
+      </ion-item>
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" class="ion-no-margin" [disabled]="!commentForm.valid">Submit</ion-button>
+      </div>
+    </ion-list>
+  </form>
+</ion-content>

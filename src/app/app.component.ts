@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     {
       title: 'Menu',
       url: 'menu',
-      icon: 'book'
+      icon: 'document-text'
     },
     {
       title: 'Contact Us',
