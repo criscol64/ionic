@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { ActivatedRoute } from '@angular/router';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-dishdetail',
@@ -14,11 +15,12 @@ export class DishdetailPage implements OnInit {
   errMess: string;
   avgstars: string;
   numcomments: number;
+  favorite: boolean = false;
 
   constructor(@Inject('BaseURL') private BaseURL,
     private dishservice: DishService,
-    private route: ActivatedRoute) {
-
+    private route: ActivatedRoute,
+    private favoriteservice: FavoriteService) {
     }
 
   ngOnInit() {
@@ -29,8 +31,13 @@ export class DishdetailPage implements OnInit {
         let total = 0;
         this.dish.comments.forEach(comment => total += comment.rating );
         this.avgstars = (total/this.numcomments).toFixed(2);
+        this.favorite = this.favoriteservice.isFavorite(this.dish.id);
       });
+  }
 
+  addToFavorites() {
+    console.log('Adding to Favorites', this.dish.id);
+      this.favorite = this.favoriteservice.addFavorite(this.dish.id);
   }
 
 }
