@@ -17,6 +17,8 @@ import { LeaderService } from './services/leader.service';
 import { PromotionService } from './services/promotion.service';
 import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -24,7 +26,9 @@ import { ProcessHttpmsgService } from './services/process-httpmsg.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     StatusBar,
