@@ -1,11 +1,19 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content>
+      <ion-header>
+        <ion-toolbar color="primary" class="ion-text-wrap">
+          <ion-title>Ristorante Con Fusion</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="background-pale">
         <ion-list id="inbox-list">
-          <ion-list-header>Ristorante Con Fusion</ion-list-header>
-          <ion-note>contact@confusion.com</ion-note>
-
+          <ion-list-header  color="primary">
+            <ion-avatar >
+              <ion-img src="assets/images/logo.png"></ion-img>
+            </ion-avatar>
+            <ion-label><h4>Ristorante Con Fusion</h4></ion-label>
+          </ion-list-header>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
               <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
